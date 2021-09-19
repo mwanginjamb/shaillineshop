@@ -49,7 +49,9 @@ return [
                         'controller' => [
                             'api/customer',
                             'api/sale',
-                            'api/sale-type'
+                            'api/sale-type',
+                            'api/stock',
+                            'api/stock-ledger'
                         ],
                         'pluralize' => false
                     ],
