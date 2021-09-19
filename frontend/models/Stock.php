@@ -3,28 +3,28 @@
 namespace app\models;
 
 use Yii;
-use yii\behaviors\BlameableBehavior;
-use yii\behaviors\TimestampBehavior;
 
 /**
- * This is the model class for table "sale_type".
+ * This is the model class for table "stock".
  *
  * @property int $id
- * @property string|null $sale
- * @property bool|null $enabled
+ * @property string|null $stock
+ * @property int|null $quantity
+ * @property int|null $entry_date
+ * @property bool|null $exhausted
  * @property int|null $created_at
  * @property int|null $updated_at
  * @property int|null $created_by
  * @property int|null $updated_by
  */
-class SaleType extends \yii\db\ActiveRecord
+class Stock extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'sale_type';
+        return 'stock';
     }
 
     /**
@@ -33,17 +33,9 @@ class SaleType extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['enabled'], 'boolean'],
-            [['created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
-            [['sale'], 'string', 'max' => 15],
-        ];
-    }
-
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::class,
-            BlameableBehavior::class
+            [['quantity', 'entry_date', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
+            [['exhausted'], 'boolean'],
+            [['stock'], 'string', 'max' => 255],
         ];
     }
 
@@ -54,8 +46,10 @@ class SaleType extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'sale' => Yii::t('app', 'Sale'),
-            'enabled' => Yii::t('app', 'Enabled'),
+            'stock' => Yii::t('app', 'Stock'),
+            'quantity' => Yii::t('app', 'Quantity'),
+            'entry_date' => Yii::t('app', 'Entry Date'),
+            'exhausted' => Yii::t('app', 'Exhausted'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'created_by' => Yii::t('app', 'Created By'),
@@ -65,10 +59,10 @@ class SaleType extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \app\models\query\SaleTypeQuery the active query used by this AR class.
+     * @return \app\models\query\StockQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \app\models\query\SaleTypeQuery(get_called_class());
+        return new \app\models\query\StockQuery(get_called_class());
     }
 }

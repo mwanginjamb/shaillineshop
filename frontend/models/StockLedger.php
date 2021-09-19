@@ -3,28 +3,27 @@
 namespace app\models;
 
 use Yii;
-use yii\behaviors\BlameableBehavior;
-use yii\behaviors\TimestampBehavior;
 
 /**
- * This is the model class for table "sale_type".
+ * This is the model class for table "stock_ledger".
  *
  * @property int $id
- * @property string|null $sale
- * @property bool|null $enabled
+ * @property int|null $stock_id
+ * @property int|null $quantity
+ * @property int|null $balance
  * @property int|null $created_at
  * @property int|null $updated_at
  * @property int|null $created_by
  * @property int|null $updated_by
  */
-class SaleType extends \yii\db\ActiveRecord
+class StockLedger extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'sale_type';
+        return 'stock_ledger';
     }
 
     /**
@@ -33,17 +32,7 @@ class SaleType extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['enabled'], 'boolean'],
-            [['created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
-            [['sale'], 'string', 'max' => 15],
-        ];
-    }
-
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::class,
-            BlameableBehavior::class
+            [['stock_id', 'quantity', 'balance', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
         ];
     }
 
@@ -54,8 +43,9 @@ class SaleType extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'sale' => Yii::t('app', 'Sale'),
-            'enabled' => Yii::t('app', 'Enabled'),
+            'stock_id' => Yii::t('app', 'Stock ID'),
+            'quantity' => Yii::t('app', 'Quantity'),
+            'balance' => Yii::t('app', 'Balance'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'created_by' => Yii::t('app', 'Created By'),
@@ -65,10 +55,10 @@ class SaleType extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \app\models\query\SaleTypeQuery the active query used by this AR class.
+     * @return \app\models\query\StockLedgerQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \app\models\query\SaleTypeQuery(get_called_class());
+        return new \app\models\query\StockLedgerQuery(get_called_class());
     }
 }

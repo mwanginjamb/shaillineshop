@@ -44,13 +44,18 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'class' => \yii\web\UrlRule::class,
-                'controller' => [
-                    'api/customer',
-                    'api/sale'
-                ],
-                'pluralize' => false
+                    [
+                        'class' => yii\rest\UrlRule::class,
+                        'controller' => [
+                            'api/customer',
+                            'api/sale',
+                            'api/sale-type'
+                        ],
+                        'pluralize' => false
+                    ],
+
             ],
+
         ],
 
     ],
