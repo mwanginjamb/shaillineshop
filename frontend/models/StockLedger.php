@@ -72,4 +72,8 @@ class StockLedger extends \yii\db\ActiveRecord
     {
         return new \app\models\query\StockLedgerQuery(get_called_class());
     }
+
+    public function getStock() {
+        return $this->hasOne(Stock::class,['id' =>  'stock_id']);
+    }
 }

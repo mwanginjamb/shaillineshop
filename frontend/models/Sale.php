@@ -78,4 +78,8 @@ class Sale extends \yii\db\ActiveRecord
     {
         return new \app\models\query\SaleQuery(get_called_class());
     }
+
+    public function getCustomer() {
+        return $this->hasOne(Customer::className(),['id' => 'customer_id']);
+    }
 }

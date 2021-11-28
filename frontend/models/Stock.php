@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "stock".
@@ -27,13 +29,21 @@ class Stock extends \yii\db\ActiveRecord
         return 'stock';
     }
 
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+            BlameableBehavior::className()
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['quantity','entry_date'], 'required'],
+            [['quantity'], 'required'],
             [['quantity', 'entry_date', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['exhausted'], 'boolean'],
             [['stock'], 'string', 'max' => 255],
@@ -65,5 +75,16 @@ class Stock extends \yii\db\ActiveRecord
     public static function find()
     {
         return new \app\models\query\StockQuery(get_called_class());
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        if($insert)
+        {
+            $this->entry_date = strtotime(date('Y-m-d'));
+            $this->save();
+        }
     }
 }

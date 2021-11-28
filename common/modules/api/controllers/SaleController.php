@@ -10,13 +10,14 @@ namespace common\modules\api\controllers;
 
 
 use app\models\Sale;
+use common\modules\api\resources\SaleResource;
 use yii\filters\Cors;
 use yii\rest\ActiveController;
 
 class SaleController extends ActiveController
 {
 
-    public $modelClass = Sale::class;
+    public $modelClass = SaleResource::class;
 
     public function behaviors()
     {

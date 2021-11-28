@@ -13,12 +13,13 @@ use app\models\Customer;
 use app\models\SaleType;
 use app\models\Stock;
 use app\models\StockLedger;
+use common\modules\api\resources\StockLedgerResource;
 use yii\filters\Cors;
 use yii\rest\ActiveController;
 
 class StockLedgerController extends ActiveController
 {
-    public $modelClass = StockLedger::class;
+    public $modelClass = StockLedgerResource::class;
 
     public function behaviors()
     {
