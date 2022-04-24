@@ -75,7 +75,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if (YII_ENV_DEV) {
+
+            return $this->render('index');
+        }
+        return $this->renderPartial('index_error');
     }
 
     /**
