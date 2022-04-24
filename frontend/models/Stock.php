@@ -18,6 +18,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int|null $updated_at
  * @property int|null $created_by
  * @property int|null $updated_by
+ * @property boolean|null $current
  */
 class Stock extends \yii\db\ActiveRecord
 {
@@ -45,7 +46,7 @@ class Stock extends \yii\db\ActiveRecord
         return [
             [['quantity'], 'required'],
             [['quantity', 'entry_date', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
-            [['exhausted'], 'boolean'],
+            [['exhausted','current'], 'boolean'],
             [['stock'], 'string', 'max' => 255],
         ];
     }
