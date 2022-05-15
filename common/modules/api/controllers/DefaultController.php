@@ -20,7 +20,7 @@ class DefaultController extends Controller
             'class' => Cors::class,
             'cors' => [
                 // restrict access to
-                'Access-Control-Allow-Origin' => ['*'],
+                'Origin' => ['*'],
                 // Allow only POST and PUT methods
                 'Access-Control-Request-Method' => ['POST', 'PUT', 'GET', 'DELETE'],
                 // Allow only headers 'X-Wsse'

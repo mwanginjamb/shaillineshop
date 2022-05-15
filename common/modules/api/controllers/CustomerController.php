@@ -29,7 +29,7 @@ class CustomerController extends ActiveController
             'cors' => [
                 //Origins allowed
                 // restrict access to
-                'Access-Control-Allow-Origin' => ['*'],
+                'Origin' => ['*'],
                 //  methods to allow
                 'Access-Control-Request-Method' => ['POST', 'PUT', 'GET', 'DELETE'],
                 // Allow only headers 'X-Wsse'
