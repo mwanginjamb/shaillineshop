@@ -20,7 +20,7 @@ class DefaultController extends Controller
             'class' => Cors::class,
             'cors' => [
                 // restrict access to
-                'Origin' => ['capacitor://161.97.88.127', 'capacitor://localhost', 'http://localhost', 'http://192.168.1.118', 'ionic://localhost'],
+                'Origin' => ['*'],
                 // Allow only POST and PUT methods
                 'Access-Control-Request-Method' => ['POST', 'PUT', 'GET', 'DELETE'],
                 // Allow only headers 'X-Wsse'
