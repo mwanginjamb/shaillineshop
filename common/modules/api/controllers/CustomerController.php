@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: HP ELITEBOOK 840 G5
@@ -26,9 +27,11 @@ class CustomerController extends ActiveController
         $behaviours['cors'] = [
             'class' => Cors::class,
             'cors' => [
-
+                //Origins allowed
+                // restrict access to
+                'Origin' => ['capacitor://161.97.88.127', 'capacitor://localhost', 'http://localhost', 'http://192.168.1.118', 'ionic://localhost'],
                 //  methods to allow
-                'Access-Control-Request-Method' => ['POST', 'PUT', 'GET','DELETE'],
+                'Access-Control-Request-Method' => ['POST', 'PUT', 'GET', 'DELETE'],
                 // Allow only headers 'X-Wsse'
                 'Access-Control-Request-Headers' => ['*'],
                 // Allow credentials (cookies, authorization headers, etc.) to be exposed to the browser

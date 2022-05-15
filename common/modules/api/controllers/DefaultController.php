@@ -20,9 +20,9 @@ class DefaultController extends Controller
             'class' => Cors::class,
             'cors' => [
                 // restrict access to
-                //'Origin' => ['capacitor://192.168.1.118','http://localhost','http://192.168.1.118','ionic://localhost'],
+                'Origin' => ['capacitor://161.97.88.127', 'capacitor://localhost', 'http://localhost', 'http://192.168.1.118', 'ionic://localhost'],
                 // Allow only POST and PUT methods
-                'Access-Control-Request-Method' => ['POST', 'PUT', 'GET','DELETE'],
+                'Access-Control-Request-Method' => ['POST', 'PUT', 'GET', 'DELETE'],
                 // Allow only headers 'X-Wsse'
                 'Access-Control-Request-Headers' => ['*'],
                 // Allow credentials (cookies, authorization headers, etc.) to be exposed to the browser
@@ -35,7 +35,6 @@ class DefaultController extends Controller
         ];
 
         return $behaviours;
-
     }
 
     /**
