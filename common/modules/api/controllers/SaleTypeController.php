@@ -29,7 +29,7 @@ class SaleTypeController extends ActiveController
             'class' => Cors::class,
             'cors' => [
                 // restrict access to
-                'Origin' => ['*'],
+                'Access-Control-Allow-Origin' => ['*'],
                 //  methods to allow
                 'Access-Control-Request-Method' => ['POST', 'PUT', 'GET', 'DELETE'],
                 // Allow only headers 'X-Wsse'
