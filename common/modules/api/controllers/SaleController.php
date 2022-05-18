@@ -55,11 +55,19 @@ class SaleController extends ActiveController
             'create' => ['POST'],
             'update' => ['PUT', 'PATCH'],
             'delete' => ['DELETE'],
+            'weekly-sales' => ['GET']
         ];
     }
 
     public function actionWeeklySales()
     {
-        return true;
+        $monday = strtotime('next Monday -1 week');
+        $monday = date('w', $monday) == date('w') ? strtotime(date("Y-m-d", $monday) . " +7 days") : $monday;
+        $saturday = strtotime(date("Y-m-d", $monday) . " +5 days");
+        $sunday = strtotime(date("Y-m-d", $monday) . " +6 days");
+
+        // Get Sales
+        $sales = Sale::find()->where(['between', 'created_at', $monday, $saturday])->all();
+        return $sales;
     }
 }
