@@ -57,4 +57,9 @@ class SaleController extends ActiveController
             'delete' => ['DELETE'],
         ];
     }
+
+    public function actionWeeklySales()
+    {
+        return true;
+    }
 }
